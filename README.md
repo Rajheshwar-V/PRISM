@@ -1,2 +1,3 @@
-# PRISM
-Image Editor
+# KCT_SE23KCT_Report_Generation_with_image_Viewer
+SRIB-PRISM Program
+

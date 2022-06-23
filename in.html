@@ -1,0 +1,107 @@
+<html>
+
+<div class="gallery1" id='gallery1'>
+    <!-- <input type="file" accept="image/*" onchange="loadfile1(event)" id="image1"> -->
+    <!-- <canvas id="canva2"></canvas> -->
+
+    <label for="name1">
+        Device:
+    </label>&nbsp;
+    <input type="text" name="name1" id="name1" autocomplete="off" value="S22" readonly="readonly" />
+    <br>
+    <label for="type1">Type:</label> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" name="type1" id="type1" autocomplete="off" value="Bokeh" readonly="readonly" />
+
+
+
+    <div class="img-container" id="img-con">
+        <input type="hidden" alt="" width="0" height="0" name="image1">
+        <input type="hidden" alt="" width="0" height="0" name="image2">
+        <input type="hidden" alt="" width="0" height="0" name="image3">
+
+        <img src="{% static 'dashboard/images/hello.jpg'%}" alt="Picture" id="imgdis1">
+        <!-- <img src="" alt="Picture" id="imgdis1" > -->
+        <!-- <canvas id="canva1" style="display: none;position:absolute;margin-left:70%;" width='1600' height='3000' ></canvas> -->
+    </div>
+    <div class="row" id="actions">
+        <div class="col-md-9 docs-buttons">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary1" id="crop1" style="background-color: #007bff;;">
+                    <span class="docs-tooltip">
+                        <i class='fa fa-crop' style='color: white'></i>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="clear" title="Clear" id='forimgdis1'
+                    style="display: none;">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.clear()">
+                        <span class="fa fa-times"></span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="crop" title="Crop" id='forimgdis1crop'
+                    style="display: none;">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.crop()">
+                        <span class='fas fa-crop-alt'></span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-success" data-method="getCroppedCanvas" id='forimgdis1get'
+                    style="display: none;" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }">
+                    <span class="docs-tooltip" data-toggle="tooltip"
+                        title="cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 })">
+                        <span class="fa fa-check"></span>
+                    </span>
+                </button>
+                <div onclick="document.getElementById('m1').style.display='block'" class="button"><button type="button"
+                        class="btn btn-primary" title="Crop" id='forimgdis1highlight'>
+                        <span class="docs-tooltip" title="cropper.crop()">
+                            <span class='fas fa-pen'></span>
+                        </span>
+                    </button></div>
+                <!-- <i class="fa-solid fa-pen"></i> -->
+                <!-- Show the cropped image in modal -->
+                <div class="modal fade docs-cropped" id="getCroppedCanvasModal" role="dialog" aria-hidden="true"
+                    aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="getCroppedCanvasTitle">Cropped</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <a class="btn btn-primary" id="download" href="javascript:void(0);"
+                                    download="cropped.jpg">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <button id="highdown1">download</button> -->
+                <br>
+            </div>
+            <br><br>
+            <!-- <div onclick="document.getElementById('m1').style.display='block'" class="button">css popup</div> -->
+
+            <div id="m1" class="modal">
+
+                <div class="box">
+                    <div class="header">
+                        <!-- <div>Header</div> -->
+                        <button onclick="ids('m1',false)" class="btn close">exit</button>
+                    </div>
+                    <div class="data">
+                        <canvas id="canva1" style="position:absolute;margin-left:10%;" width='1600'
+                            height='3000'></canvas>
+                    </div>
+                    <div class="foot">
+                        <!-- <div>Footer</div> -->
+                        <button id="iddown" class="btn ok"><i class="fa fa-check"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</html>
