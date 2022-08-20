@@ -326,8 +326,7 @@
 
 
                     <!-- Working -->
-                    <button name="submit" id="btn" class="submit1" value="Upload"
-                       />
+                    <button name="submit" id="btn" class="submit1" value="Upload">Upload</button>
                   </div>
                 </div>
 
@@ -521,12 +520,11 @@
     .gallery2,
     .gallery3 {
       position: absolute;
-      /* border: 3px solid lawngreen; */
       margin-left: 40%;
       width: 550px;
       height: 400px;
       margin-top: 20px;
-      /* overflow: hidden; */
+
 
     }
 
@@ -5105,7 +5103,7 @@
                   download.href = result.toDataURL(uploadedImageType);
                   console.log(im);
                   document.getElementById(im).src = download.href;
-                  document.getElementById(im + "input").value = download.href;
+                  //document.getElementById(im + "input").value = download.href;
                   cropper.destroy();
                   // s='for'+im;
                   console.log(im);

@@ -1,13 +1,29 @@
 const button = document.querySelector(".submit1");
 button.addEventListener("click", async function () {
   const base64_1 = document.getElementById("imgdis1").src;
+  let image1;
+  const base64_2 = document.getElementById("imgdis2").src;
+  let image2;
+  const base64_3 = document.getElementById("imgdis3").src;
+  let image3;
   try {
     await fetch(base64_1)
       .then(async (res) => {
+        console.log(res);
         return await res.blob();
       })
-      .then(async (blob) => {
-        const file = new File([blob], "filename.jpeg");
+      .then((blob) => {
+        image1 = blob;
+      });
+  } catch (error) {
+    console.log(error);
+    alert("Unable to upload file");
+    alert("File upload success");
+
+  }
+
+  
+  const file = new File([image1], "filename1.jpeg");
         const fields = new FormData();
         fields.append("image1", file);
         fields.append("name1", document.getElementById("name1").value);
@@ -32,11 +48,4 @@ button.addEventListener("click", async function () {
             alert("File upload success");
 
           });
-      });
-  } catch (error) {
-    console.log(error);
-    alert("Unable to upload file");
-    alert("File upload success");
-
-  }
 });

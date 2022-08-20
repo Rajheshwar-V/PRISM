@@ -17,8 +17,8 @@ def main_dashboard(request):
 
 def save_study(request):
     if request.method == "POST":
-        print(request.POST)
-        print(request.FILES)
+        # print(request.POST)
+        # print(request.FILES)
         name1 =  request.POST["name1"]
         type1 = request.POST["type1"]
         comment = request.POST["comments"]
@@ -30,6 +30,8 @@ def save_study(request):
         # ext = format.split('/')[-1] 
 
         # image1 = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
+
+        # print(image1)
 
         study_name = name1
 
