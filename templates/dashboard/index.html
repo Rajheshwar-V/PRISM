@@ -110,7 +110,10 @@
                   <span class="docs-tooltip" title="cropper.crop()">
                     <span class='fas fa-pen'></span>
                   </span>
-                </button></div>
+                </button>
+                <input type="checkbox" id="img1highlight" name="img1highlight" >
+
+              </div>
               <!-- <i class="fa-solid fa-pen"></i> -->
               <!-- Show the cropped image in modal -->
               <div class="modal fade docs-cropped" id="getCroppedCanvasModal" role="dialog" aria-hidden="true"
@@ -194,7 +197,9 @@
                         <span class="docs-tooltip" title="cropper.crop()">
                           <span class='fas fa-pen'></span>
                         </span>
-                      </button></div>
+                      </button>
+                      <input type="checkbox" id="img2highlight" name="img2highlight" >
+                    </div>
                     <!-- Show the cropped image in modal -->
                     <div class="modal fade docs-cropped" id="getCroppedCanvasModal" role="dialog" aria-hidden="true"
                       aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
@@ -276,7 +281,9 @@
                               <span class="docs-tooltip" title="cropper.crop()">
                                 <span class='fas fa-pen'></span>
                               </span>
-                            </button></div>
+                            </button>
+                            <input type="checkbox" id="img3highlight" name="img3highlight" >
+                          </div>
                           <!-- Show the cropped image in modal -->
                           <div class="modal fade docs-cropped" id="getCroppedCanvasModal" role="dialog"
                             aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
@@ -447,6 +454,14 @@
 
   <!-- Main CSS -->
   <style>
+
+    .img1highlight,.img2highlight,.img1highlight{
+
+      height: 30px;
+      width: 30px;
+
+
+    }
     .img-container,
     .img-preview {
       background-color: #f7f7f7;

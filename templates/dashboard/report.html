@@ -69,7 +69,13 @@
             </tr>
             <tr>
                 {% for image in study_images%}
+                {%if image.pk == 68%}
+                <td><img class="img1" src="/media/{{image.image}}"></td>
+
+                {%else%}
+
                 <td><img src="/media/{{image.image}}"></td>
+                {%endif%}
                 {%endfor%}
             </tr>
             <tr>
@@ -86,6 +92,10 @@
 
     <!-- Sidebar CSS Starts-->
     <style>
+        .img1 {
+            border: 5px solid red;
+        }
+
         .content {
             position: relative;
             margin-left: 210px;
