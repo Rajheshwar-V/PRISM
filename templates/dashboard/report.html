@@ -59,6 +59,7 @@
             <span> Report of Models </span>
         </div>
         <!-- Navbar Ends -->
+        
         <table>
 
             <tr>
@@ -70,15 +71,17 @@
             <tr>
                 {% for image in study_images%}
                 {%if image.pk == 68%}
-                <td><img class="img1" src="/media/{{image.image}}"></td>
+                <!-- <td><img class="img1" src="/media/{{image.image}}"></td> -->
 
                 {%else%}
 
-                <td><img src="/media/{{image.image}}"></td>
+                <td><img class="img1" src="/media/{{image.image}}"></td>
                 {%endif%}
+
                 {%endfor%}
             </tr>
             <tr>
+
                 <th class="comments">Comments</th>
                 <td class="comments">{{study.comment}}
                 </td>
@@ -92,8 +95,12 @@
 
     <!-- Sidebar CSS Starts-->
     <style>
+        :root {
+        --color: {{ color1 }};
+        }
+
         .img1 {
-            border: 5px solid red;
+            border: 5px solid var(--color);
         }
 
         .content {

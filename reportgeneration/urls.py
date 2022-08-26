@@ -19,11 +19,13 @@ from dashboard import views
 
 from django.conf import settings
 from django.conf.urls.static import static
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dashboard/',views.main_dashboard),
-    path('save-study/', views.save_study),
-    path('all-studies/', views.all_studies),
-    path('view-study/<int:study_id>', views.view_study)
+    path('dashboard/',views.main_dashboard, name="home"),
+    path('save-study/', views.save_study, name="save"),
+    path('all-studies/', views.all_studies, name="all"),
+    path('view-study/<int:study_id>', views.view_study, name="view")
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
