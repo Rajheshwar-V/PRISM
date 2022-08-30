@@ -66,7 +66,7 @@
         <br>
         <label for="type1">Type:</label> &nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" name="type1" id="type1" autocomplete="off" value="Bokeh" />
-        <input type="text" name="color1" value="red"/>
+
 
 
         <div class="img-container" id="img-con">
@@ -111,7 +111,7 @@
                     <span class='fas fa-pen'></span>
                   </span>
                 </button>
-                <input type="checkbox" id="img1highlight" name="img1highlight">
+                <input type="checkbox" id="img1highlight" name="img1highlight" >
 
               </div>
               <!-- <i class="fa-solid fa-pen"></i> -->
@@ -159,7 +159,7 @@
               <br>
               <label for="type2">Type:</label> &nbsp;&nbsp;&nbsp;&nbsp;
               <input type="text" name="type2" id="type2" autocomplete="off" value="Beauty" />
-              <!-- <input type="image" src="" alt="" width="0" height="0" name="image2"> -->
+              <input type="image" src="" alt="" width="0" height="0" name="image2">
               <div class="img-container">
                 <img src="{% static 'dashboard/images/hello.jpg'%}" alt="Picture" id="imgdis2">
                 <!-- <button id="crop2" class="bi bi-crop"></button> -->
@@ -198,7 +198,7 @@
                           <span class='fas fa-pen'></span>
                         </span>
                       </button>
-                      <input type="checkbox" id="img2highlight" name="img2highlight">
+                      <input type="checkbox" id="img2highlight" name="img2highlight" >
                     </div>
                     <!-- Show the cropped image in modal -->
                     <div class="modal fade docs-cropped" id="getCroppedCanvasModal" role="dialog" aria-hidden="true"
@@ -232,7 +232,7 @@
 
 
 
-                    <label for="name3">
+                    <label for="name1">
                       Device:
                     </label>&nbsp;
                     <input type="text" name="name3" id="name3" autocomplete="off" value="S22" />
@@ -240,7 +240,7 @@
                     <label for="type1">Type:</label> &nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" name="type3" id="type3" autocomplete="off" value="HDR" />
 
-                    <!-- <input type="image" src="" alt="" width="0" height="0" name="image3"> -->
+                    <input type="image" src="" alt="" width="0" height="0" name="image3">
 
 
                     <div class="img-container">
@@ -282,7 +282,7 @@
                                 <span class='fas fa-pen'></span>
                               </span>
                             </button>
-                            <input type="checkbox" id="img3highlight" name="img3highlight">
+                            <input type="checkbox" id="img3highlight" name="img3highlight" >
                           </div>
                           <!-- Show the cropped image in modal -->
                           <div class="modal fade docs-cropped" id="getCroppedCanvasModal" role="dialog"
@@ -454,16 +454,14 @@
 
   <!-- Main CSS -->
   <style>
-    .img1highlight,
-    .img2highlight,
-    .img1highlight {
+
+    .img1highlight,.img2highlight,.img1highlight{
 
       height: 30px;
       width: 30px;
 
 
     }
-
     .img-container,
     .img-preview {
       background-color: #f7f7f7;
@@ -4884,7 +4882,7 @@
       link.href = image;
       // link.click();
       // document.getElementById('imgdis').src=link;
-      console.log(image);
+      // console.log(image);
       ids('m1', false);
       var img = document.getElementById(window.new);
       img.src = link;
