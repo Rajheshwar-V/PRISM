@@ -66,7 +66,20 @@
         <br>
         <label for="type1">Type:</label> &nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" name="type1" id="type1" autocomplete="off" value="Bokeh" />
-        <input type="text" name="color1" value="red"/>
+        <!-- <input type="text" name="color1" value="red"/> -->
+      
+      
+        <label for="color1">Highlight Color</label>
+        <input type="checkbox" id="img1highlight" name="img1highlight">
+
+        <select name="color1" id="color1">
+          <option>  </option>
+          <option value="#ff1100">Red</option>
+          <option value="#003cff">Blue</option>
+          <option value="#000000">Black</option>
+          <option value="#00ff1a">Green</option>
+          <option value="#e5ff00">Yellow</option>
+        </select>
 
 
         <div class="img-container" id="img-con">
@@ -111,7 +124,6 @@
                     <span class='fas fa-pen'></span>
                   </span>
                 </button>
-                <input type="checkbox" id="img1highlight" name="img1highlight">
 
               </div>
               <!-- <i class="fa-solid fa-pen"></i> -->
@@ -160,6 +172,17 @@
               <label for="type2">Type:</label> &nbsp;&nbsp;&nbsp;&nbsp;
               <input type="text" name="type2" id="type2" autocomplete="off" value="Beauty" />
               <!-- <input type="image" src="" alt="" width="0" height="0" name="image2"> -->
+              <label for="color2">Highlight Color</label>
+              <input type="checkbox" id="img1highlight" name="img1highlight">
+
+              <select name="color2" id="color2">
+                <option>  </option>
+                <option value="#ff1100">Red</option>
+                <option value="#003cff">Blue</option>
+                <option value="#000000">Black</option>
+                <option value="#00ff1a">Green</option>
+                <option value="#e5ff00">Yellow</option>
+              </select>
               <div class="img-container">
                 <img src="{% static 'dashboard/images/hello.jpg'%}" alt="Picture" id="imgdis2">
                 <!-- <button id="crop2" class="bi bi-crop"></button> -->
@@ -241,8 +264,17 @@
                     <input type="text" name="type3" id="type3" autocomplete="off" value="HDR" />
 
                     <!-- <input type="image" src="" alt="" width="0" height="0" name="image3"> -->
+                    <label for="color3">Highlight Color</label>
+                    <input type="checkbox" id="img1highlight" name="img1highlight">
 
-
+                    <select name="color3" id="color3">
+                      <option> </option>
+                      <option value="#ff1100">Red</option>
+                      <option value="#003cff">Blue</option>
+                      <option value="#000000">Black</option>
+                      <option value="#00ff1a">Green</option>
+                      <option value="#e5ff00">Yellow</option>
+                    </select>
                     <div class="img-container">
                       <img src="{% static 'dashboard/images/hello.jpg'%}" alt="Picture" id="imgdis3">
                       <!-- <button id="crop3">crop</button> -->
