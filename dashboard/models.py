@@ -13,4 +13,6 @@ class StudyImages(models.Model):
     device = models.CharField(max_length=256)
     photo_type = models.CharField(max_length=256)
     image = models.ImageField(upload_to="images")
+    highlight = models.CharField(max_length=50, blank=True)
+    color = models.CharField(max_length=50, blank=True)
     study_id = models.ForeignKey(Study, null=True, on_delete=models.SET_NULL)

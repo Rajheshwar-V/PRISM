@@ -70,13 +70,25 @@
             </tr>
             <tr>
                 {% for image in study_images%}
-                {%if image.pk == 68%}
-                <!-- <td><img class="img1" src="/media/{{image.image}}"></td> -->
+                <!-- checking for highlight field -->
+                {% if image.highlight == "on" %}
+                    {%if image.pk == 68%}
+                    <!-- <td><img class="img1" src="/media/{{image.image}}"></td> -->
 
-                {%else%}
+                    {%else%}
 
-                <td><img class="img1" src="/media/{{image.image}}"></td>
-                {%endif%}
+                    <td><img class="img1" style="color: {{image.color}};" src="/media/{{image.image}}"></td>
+
+                    {%endif%}
+                {% else %}
+                    {%if image.pk == 68%}
+                    <!-- <td><img class="img1" src="/media/{{image.image}}"></td> -->
+                    
+                    {%else%}
+                    
+                    <td><img class="img1" src="/media/{{image.image}}"></td>
+                    {%endif%}
+                {% endif %}
 
                 {%endfor%}
             </tr>
@@ -96,7 +108,7 @@
     <!-- Sidebar CSS Starts-->
     <style>
         :root {
-        --color: {{ color1 }};
+        --color: {{ image.color }};
         }
 
         .img1 {

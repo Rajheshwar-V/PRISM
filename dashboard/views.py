@@ -10,7 +10,6 @@ import base64
 
 from django.core.files.base import ContentFile
 
-hig_color = None
 
 def main_dashboard(request):
     if request.method == "POST":
@@ -18,39 +17,43 @@ def main_dashboard(request):
         print(request.FILES)
 
         comment = request.POST["w3review"]
-        global hig_color 
-        hig_color = request.POST["color1"]
 
         name1 =  request.POST["name1"]
         type1 = request.POST["type1"]
         image1 = request.FILES.get("image1", False)
+        img1highlight = request.POST.get('img1highlight', False)
+        color1 = request.POST["color1"]
         study_name = name1
         new_study = Study(study_name=study_name, comment=comment)
         new_study.save()
-        new_study_image1 = StudyImages(device=name1, photo_type=type1, image=image1, study_id=new_study)
+        new_study_image1 = StudyImages(device=name1, photo_type=type1, image=image1, highlight=img1highlight, color=color1, study_id=new_study)
         new_study_image1.save()
 
 
         name2 =  request.POST["name2"]
         type2 = request.POST["type2"]
+        img2highlight = request.POST.get('img2highlight', False)
+        color2 = request.POST["color2"]
         image2 = request.FILES.get("image2", False)
         study_name = name2
         new_study = Study(study_name=study_name, comment=comment)
         new_study.save()
-        new_study_image2 = StudyImages(device=name2, photo_type=type2, image=image2, study_id=new_study)
+        new_study_image2 = StudyImages(device=name2, photo_type=type2, image=image2, highlight=img2highlight, color=color2, study_id=new_study)
         new_study_image2.save()
 
 
 
         name3 =  request.POST["name3"]
         type3 = request.POST["type3"]
+        img3highlight = request.POST.get('img3highlight', False)
+        color3 = request.POST["color3"]
         image3 = request.FILES.get("image3", False)
         study_name = name3
 
         new_study = Study(study_name=study_name, comment=comment)
         new_study.save()
 
-        new_study_image3 = StudyImages(device=name3, photo_type=type3, image=image3, study_id=new_study)
+        new_study_image3 = StudyImages(device=name3, photo_type=type3, image=image3, highlight=img3highlight, color=color3, study_id=new_study)
         new_study_image3.save()
         return redirect(reverse("home"))
     return render(request, 'dashboard/index.html')
@@ -109,13 +112,10 @@ def all_studies(request):
 
 def view_study(request, study_id):
     study = Study.objects.filter(study_id=study_id)[0]
-    global hig_color
     study_images = StudyImages.objects.filter(study_id=study_id)
     
-    print("col", hig_color)
     return render(request, 'dashboard/report.html', context={
         "study": study, 
         "study_images":study_images,
-        "color1": hig_color,
     })
 
