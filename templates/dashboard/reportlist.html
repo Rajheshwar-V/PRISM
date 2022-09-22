@@ -65,27 +65,51 @@
 
 
             </tr>
+            <form  method="POST" action="" id="allreport-form" class="allreport-form">
+                {% for study in studies%}
 
-        {% for study in studies%}
+                <tr>
+                    <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                        {{study.study_id}}</td>
 
-            <tr>
-                <td>{{study.study_id}}</td>
-                <td><a href="/view-study/{{study.study_id}}">{{study.study_name}}</a></td>
-                <td>{{study.comment}}</td>
-            </tr>
-            
-            
+                    <td><a href="/view-study/{{study.study_id}}">{{study.study_name}}</a></td>
+                    <td>{{study.comment}}</td>
+                </tr>
 
-        {%endfor%}
+
+
+                {%endfor%}
+
+
         </table>
         <!-- Table Ends -->
+        <button name="submit2" id="btn" class="submit2" value="GetReports">Get Reports</button>
 
     </div>
+
+</form>
 
 
 
     <!-- Sidebar CSS Starts-->
     <style>
+        .submit2{
+            background-color: #4CAF50;
+            width: auto;
+            height: 50px;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            /* margin-bottom: 10px; */
+            cursor: pointer;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
         .content {
             position: relative;
             margin-left: 210px;
