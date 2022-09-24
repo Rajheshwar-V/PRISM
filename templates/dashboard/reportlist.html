@@ -62,14 +62,15 @@
 
             <tr>
                 <th>Reports</th>
-
+                
 
             </tr>
-            <form  method="POST" action="" id="allreport-form" class="allreport-form">
+            <form  method="POST" action="{% url 'study_list' %}" id="allreport-form" class="allreport-form">
+                {% csrf_token %}
                 {% for study in studies%}
 
                 <tr>
-                    <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                    <td><input type="checkbox" id="vehicle1" name="report_list" value="{{study.study_id}}">
                         {{study.study_id}}</td>
 
                     <td><a href="/view-study/{{study.study_id}}">{{study.study_name}}</a></td>

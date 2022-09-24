@@ -6,13 +6,15 @@ from django.shortcuts import redirect, render, reverse
 from .models import *
 # Create your views here.
 
-import base64
-
+import os
+from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
+from django.conf import settings
+import base64
 
 
 def main_dashboard(request):
-    global image1
+    global file
     
     if request.method == "POST":
         print(request.POST)
@@ -21,16 +23,22 @@ def main_dashboard(request):
         comment = request.POST["w3review"]
 
         name1 =  request.POST["name1"]
-        type1 = request.POST["type1"]
-        # image1 = request.FILES.get("image1", False)
-        img1highlight = request.POST.get('img1highlight', False)
-        color1 = request.POST["color1"]
         study_name = name1
         new_study1 = Study(study_name=study_name, comment=comment)
         new_study1.save()
-        new_study_image1 = StudyImages(device=name1, photo_type=type1, image=image1, highlight=img1highlight, color=color1, study_id=new_study1)
-        new_study_image1.save()
+        
+        print(file)
+        image = None
 
+        type1 = request.POST["type1"]
+        img1highlight = request.POST.get('img1highlight', False)
+        color1 = request.POST["color1"]
+        new_study_image1 = StudyImages(device=name1, photo_type=type1, image=image, highlight=img1highlight, color=color1, study_id=new_study1)
+        new_study_image1.save()
+        image = open(file, 'rb').read()
+        new_study_image1.image.save('image1.jpg', ContentFile(image))
+
+        original = new_study_image1.image.open()
 
         name2 =  request.POST["name2"]
         type2 = request.POST["type2"]
@@ -39,7 +47,7 @@ def main_dashboard(request):
         study_name = name2
         # new_study2 = Study(study_name=study_name, comment=comment)
         # new_study2.save()
-        new_study_image2 = StudyImages(device=name2, photo_type=type2, image=image1, highlight=img2highlight, color=color2, study_id=new_study1)
+        new_study_image2 = StudyImages(device=name2, photo_type=type2, image=original, highlight=img2highlight, color=color2, study_id=new_study1)
         new_study_image2.save()
 
 
@@ -53,7 +61,7 @@ def main_dashboard(request):
         # new_study3 = Study(study_name=study_name, comment=comment)
         # new_study3.save()
 
-        new_study_image3 = StudyImages(device=name3, photo_type=type3, image=image1, highlight=img3highlight, color=color3, study_id=new_study1)
+        new_study_image3 = StudyImages(device=name3, photo_type=type3, image=original, highlight=img3highlight, color=color3, study_id=new_study1)
         new_study_image3.save()
         return redirect(reverse("home"))
 
@@ -61,10 +69,10 @@ def main_dashboard(request):
 
 
 
-image1 = None
+file = None
 
 def save_study(request):
-    global image1
+    global file
 
     if request.method == "POST":
         print(request.POST)
@@ -75,6 +83,11 @@ def save_study(request):
         name1 =  request.POST["name1"]
         type1 = request.POST["type1"]
         image1 = request.FILES["image1"]
+
+        image_name = image1.name
+        print(image_name)
+        path = default_storage.save(f'tmp/{image_name}', ContentFile(image1.read()))
+        file = os.path.join(settings.MEDIA_ROOT, path)
 
         # name2 =  request.POST.get('name2', False)
         # type2 = request.POST["type2"]
@@ -98,11 +111,11 @@ def save_study(request):
 
         study_name = name1
 
-        new_study = Study(study_name=study_name, comment=comment)
-        new_study.save()
+        # new_study = Study(study_name=study_name, comment=comment)
+        # new_study.save()
 
-        new_study_image = StudyImages(device=name1, photo_type=type1, image=image1, study_id=new_study)
-        new_study_image.save()
+        # new_study_image = StudyImages(device=name1, photo_type=type1, image=image1, study_id=new_study)
+        # new_study_image.save()
 
         return JsonResponse({'status':'200', "value": "21323"})
 
@@ -114,6 +127,21 @@ def all_studies(request):
     return render(request, 'dashboard/reportlist.html', context={
         "studies": studies
     })
+
+
+def view_study_list(request):
+    if request.method == "POST":
+        report_list = request.POST.getlist('report_list')
+        # print(report_list)
+
+        study_sets = {}
+        for study_id in report_list:
+            study = Study.objects.filter(study_id=study_id)[0]
+            print(study)
+            study_sets[study] = StudyImages.objects.filter(study_id=study_id)
+        return render(request, 'dashboard/view_report_list.html', {
+            "study_sets": study_sets,
+        })
 
 
 def view_study(request, study_id):

@@ -26,6 +26,7 @@ urlpatterns = [
     path('dashboard/',views.main_dashboard, name="home"),
     path('save-study/', views.save_study, name="save"),
     path('all-studies/', views.all_studies, name="all"),
-    path('view-study/<int:study_id>', views.view_study, name="view")
+    path('view-study/<int:study_id>', views.view_study, name="view"),
+    path("view-studies/", views.view_study_list, name="study_list")
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
