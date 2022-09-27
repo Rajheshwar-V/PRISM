@@ -1,4 +1,3 @@
-from statistics import mode
 from django.db import models
 
 # Create your models here.
@@ -6,6 +5,7 @@ from django.db import models
 class Study(models.Model):
     study_id = models.BigAutoField(primary_key=True)
     study_name = models.CharField(max_length=256)
+    date = models.DateTimeField(auto_now_add=True, null=True)
     comment = models.TextField()
 
 class StudyImages(models.Model):
