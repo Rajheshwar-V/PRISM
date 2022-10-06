@@ -21,15 +21,16 @@ def main_dashboard(request):
         print(request.FILES)
 
         comment = request.POST["w3review"]
-
-        name1 =  request.POST["name1"]
-        study_name = name1
-        new_study1 = Study(study_name=study_name, comment=comment)
+        title = request.POST["title"]
+        
+        new_study1 = Study(study_name=title, comment=comment)
         new_study1.save()
         
         print(file)
         image = None
 
+
+        name1 =  request.POST["name1"]
         type1 = request.POST["type1"]
         img1highlight = request.POST.get('img1highlight', False)
         color1 = request.POST["color1"]
@@ -44,7 +45,7 @@ def main_dashboard(request):
         type2 = request.POST["type2"]
         img2highlight = request.POST.get('img2highlight', False)
         color2 = request.POST["color2"]
-        study_name = name2
+        
         # new_study2 = Study(study_name=study_name, comment=comment)
         # new_study2.save()
         new_study_image2 = StudyImages(device=name2, photo_type=type2, image=original, highlight=img2highlight, color=color2, study_id=new_study1)

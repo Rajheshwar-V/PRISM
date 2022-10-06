@@ -60,47 +60,49 @@
         </div>
         <!-- Navbar Ends -->
 
-        {% for study, study_images in study_sets.items %}
         <table>
+            {% for study, study_images in study_sets.items %}
+                <tr>
+                    <th>{{study.study_name}}</th>
+                </tr>
+                <tr>
+                    {% for image in study_images%}
+                    <th>{{image.device}}</th>
+                    {%endfor%}
 
-            <tr>
-                {% for image in study_images%}
-                <th>{{image.device}}</th>
-                {%endfor%}
+                </tr>
+                <tr>
+                    {% for image in study_images%}
+                    <!-- checking for highlight field -->
+                    {% if image.highlight == "on" %}
+                        {%if image.pk == 68%}
+                        <!-- <td><img class="img1" src="/media/{{image.image}}"></td> -->
 
-            </tr>
-            <tr>
-                {% for image in study_images%}
-                <!-- checking for highlight field -->
-                {% if image.highlight == "on" %}
-                {%if image.pk == 68%}
-                <!-- <td><img class="img1" src="/media/{{image.image}}"></td> -->
+                        {%else%}
 
-                {%else%}
+                        <td><img style="border: 5px solid {{image.color}};" src="/media/{{image.image}}"></td>
+                        
+                        {%endif%}
+                    {% else %}
+                        {%if image.pk == 68%}
+                        <!-- <td><img class="img1" src="/media/{{image.image}}"></td> -->
 
-                <td><img class="img1" style="color: {{image.color}};" src="/media/{{image.image}}"></td>
-                
-                {%endif%}
-                {% else %}
-                {%if image.pk == 68%}
-                <!-- <td><img class="img1" src="/media/{{image.image}}"></td> -->
+                        {%else%}
 
-                {%else%}
+                        <td><img src="/media/{{image.image}}"></td>
+                        {%endif%}
+                    {% endif %}
 
-                <td><img class="img1" src="/media/{{image.image}}"></td>
-                {%endif%}
-                {% endif %}
+                    {%endfor%}
+                </tr>
+                <tr>
 
-                {%endfor%}
-            </tr>
-            <tr>
-
-                <th class="comments">Comments</th>
-                <td class="comments">{{ study.comment }}
-                </td>
-            </tr>
+                    <th class="comments">Comments</th>
+                    <td class="comments">{{ study.comment }}
+                    </td>
+                </tr>
+                {% endfor %}
         </table>
-        {% endfor %}
         <!-- Table Ends -->
 
     </div>
