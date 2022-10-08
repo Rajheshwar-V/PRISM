@@ -28,6 +28,13 @@
     <link rel="stylesheet" href="cropper.css">
     <link rel="stylesheet" href="main.css">
 
+<!-- HTML 2 PDF CDN PLUGINS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
 </head>
 
 <body>
@@ -91,12 +98,25 @@
 
         </table>
         <!-- Table Ends -->
-        <button name="submit2" id="btn" class="submit2" value="GetReports">Get Reports</button>
+        <button name="submit2" id="btn" class="submit2" onclick="generatePDF();" value="GetReports">Get Reports</button>
 
     </div>
 
 </form>
+<script>
+    function generatePDF() {
+      const element = document.getElementById("content");
+      html2pdf(element, {
+        margin: 10,
+        filename: 'myfile.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, logging: true, dpi: 192, letterRendering: true },
+        jsPDF: { unit: 'mm', format: 'a3', orientation: 'landscape' }
+      });
 
+      html2pdf().from(element).save();
+    }
+  </script>
 
 
     <!-- Sidebar CSS Starts-->
