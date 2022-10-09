@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Multiple Report Generation Page -->
 
 <head>
     <meta charset="UTF-8">
@@ -15,7 +16,7 @@
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">w
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -68,86 +69,102 @@
         <!-- Navbar Ends -->
         <div>
             <table>
+                <!-- <tr>
+                    <span style="font-weight:bold"> {{study.study_name}} </span>
+                </tr> -->
 
                 {% for study, study_images in study_sets.items %}
-
+                <div>
+                    
                 <tr>
+                    <span style="font-weight:bold"> {{study.study_name}} </span>
+                </tr>
+                    <!-- <tr>
                     <th class="heading">{{study.study_name}}</th>
-                </tr>
-                <tr>
+                     </tr> -->
+                    <tr>
 
-                    {% for image in study_images%}
-                    <th>{{image.device}}</th>
-                    {%endfor%}
+                        {% for image in study_images%}
+                        <th>{{image.device}}</th>
+                        {%endfor%}
 
-                </tr>
-                <tr>
-                    {% for image in study_images%}
+                    </tr>
+                    <tr>
+                        {% for image in study_images%}
 
-                    <!-- checking for highlight field -->
-                    {% if image.highlight == "on" %}
-                    {%if image.pk == 68%}
-                    <!-- <td><img class="img1" src="/media/{{image.image}}"></td> -->
+                        <!-- checking for highlight field -->
+                        {% if image.highlight == "on" %}
+                        {%if image.pk == 68%}
+                        <!-- <td><img class="img1" src="/media/{{image.image}}"></td> -->
 
-                    {%else%}
+                        {%else%}
 
-                    <td><img style="border: 5px solid {{image.color}};" src="/media/{{image.image}}"></td>
+                        <td><img style="border: 5px solid {{image.color}};" src="/media/{{image.image}}"></td>
 
-                    {%endif%}
-                    {% else %}
-                    {%if image.pk == 68%}
-                    <!-- <td><img class="img1" src="/media/{{image.image}}"></td> -->
+                        {%endif%}
+                        {% else %}
+                        {%if image.pk == 68%}
+                        <!-- <td><img class="img1" src="/media/{{image.image}}"></td> -->
 
-                    {%else%}
+                        {%else%}
 
-                    <td><img src="/media/{{image.image}}"></td>
-                    {%endif%}
-                    {% endif %}
-                    {%endfor%}
-                </tr>
-                <tr>
+                        <td><img src="/media/{{image.image}}"></td>
+                        {%endif%}
+                        {% endif %}
+                        {%endfor%}
+                    </tr>
+                    <tr>
 
-                    <th class="comments">Comments</th>
-                    <td class="comments">{{ study.comment }}</td>
+                        <th class="comments">Comments</th>
+                        <td class="comments">{{ study.comment }}</td>
 
-                </tr>
+                    </tr>
+                </div>
+                <!-- {{ .|linebreaks }} -->
+
                 {% endfor %}
+                
             </table>
             <!-- Table Ends -->
+            <br>    
         </div>
-        <button name="submit2" id="downloadReport" class="submit2" onclick="generatePdf()" value="GetReports">Get Reports</button>
-        Reports</button>
-
     </div>
-
-    <!-- <script>
-
-        function generatePdf(){
-
-                const element = document.getElementById("content");
-                html2pdf.from(element).save();
-        }
-    </script> -->
+    </div>
+    <button name="submit2" id="downloadReport" class="submit2" onclick="generatePDF()" value="GetReports">Get
+        Reports</button>
+    .</button>
 
     <script>
         function generatePDF() {
-          const element = document.getElementById("content");
-          html2pdf(element, {
-            margin: 10,
-            filename: 'myfile.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, logging: true, dpi: 192, letterRendering: true },
-            jsPDF: { unit: 'mm', format: 'a3', orientation: 'landscape' }
-          });
-    
-          html2pdf().from(element).save();
+            const element = document.getElementById("content");
+            html2pdf(element, {
+                margin: 5,
+                filename: 'myfile.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 100, logging: true, dpi: 192, letterRendering: true },
+                jsPDF: { unit: 'mm', format: 'a3', orientation: 'landscape' }
+            });
+
+            html2pdf().from(element).save();
         }
-      </script>
+    </script>
 
 
 
     <!-- Sidebar CSS Starts-->
     <style>
+        .content {
+            position: relative;
+            margin-left: 90px;
+            width: 90%;
+        }
+
+        /* .content {
+                position: relative;
+                margin-left: 210px;
+                width: 80%;
+            } */
+
         .submit2 {
             background-color: #4CAF50;
             width: auto;
@@ -164,6 +181,7 @@
             position: fixed;
             bottom: 10px;
             right: 10px;
+            border-radius: 50px;
         }
 
 
@@ -186,11 +204,7 @@
             border: 5px solid var(--color);
         }
 
-        .content {
-            position: relative;
-            margin-left: 210px;
-            width: 80%;
-        }
+
 
         table {
             width: 100%;
@@ -223,7 +237,7 @@
             background-color: rgb(30, 65, 99);
             color: white;
             text-align: center;
-            width: 100%;
+            width: 103%;
         }
 
         /* SIDEBAR CSS */

@@ -66,6 +66,8 @@
         <div>
             <table>
 
+                <span style="font-weight:bold"> {{study.study_name}} </span>
+
                 <tr>
                     {% for image in study_images%}
                     <th>{{image.device}}</th>
@@ -105,25 +107,26 @@
             </table>
         </div>
         <!-- Table Ends -->
-        <button name="submit2" id="downloadReport" class="submit2" onclick="generatePDF()" value="GetReports">Get Reports</button>
-        Reports</button>
+        <button name="submit2" id="downloadReport" class="submit2" onclick="generatePDF()" value="GetReports">Get
+            Reports</button>
+        .</button>
 
     </div>
 
     <script>
         function generatePDF() {
-          const element = document.getElementById("content");
-          html2pdf(element, {
-            margin: 10,
-            filename: 'myfile.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 100, logging: true, dpi: 192, letterRendering: true },
-            jsPDF: { unit: 'mm', format: 'a3', orientation: 'landscape' }
-          });
-    
-          html2pdf().from(element).save();
+            const element = document.getElementById("content");
+            html2pdf(element, {
+                margin: 10,
+                filename: 'myfile.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 100, logging: true, dpi: 192, letterRendering: true },
+                jsPDF: { unit: 'mm', format: 'a3', orientation: 'landscape' }
+            });
+
+            html2pdf().from(element).save();
         }
-      </script>
+    </script>
     <!-- Sidebar CSS Starts-->
     <style>
         .submit2 {
@@ -142,6 +145,8 @@
             position: fixed;
             bottom: 10px;
             right: 10px;
+            border-radius: 50px;
+
         }
 
         :root {
@@ -160,9 +165,9 @@
 
         .content {
             position: relative;
-            margin-left: 90px;
-            width: 80%;
-/*            margin-left: 210px;
+            margin-left: 70px;
+            width: 90%;
+            /*            margin-left: 210px;
             width: 80%;*/
         }
 
@@ -197,7 +202,8 @@
             background-color: rgb(30, 65, 99);
             color: white;
             text-align: center;
-            width: 115%;
+            width: 103%;
+            align-items: center;
         }
 
         /* SIDEBAR CSS */
