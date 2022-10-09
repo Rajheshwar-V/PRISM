@@ -57,7 +57,6 @@ def main_dashboard(request):
         type3 = request.POST["type3"]
         img3highlight = request.POST.get('img3highlight', False)
         color3 = request.POST["color3"]
-        study_name = name3
 
         # new_study3 = Study(study_name=study_name, comment=comment)
         # new_study3.save()

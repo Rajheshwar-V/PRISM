@@ -68,12 +68,12 @@
         </div>
         <!-- Navbar Ends -->
         <div>
+            {% for study, study_images in study_sets.items %}
             <table>
                 <!-- <tr>
                     <span style="font-weight:bold"> {{study.study_name}} </span>
                 </tr> -->
 
-                {% for study, study_images in study_sets.items %}
                 <div>
                     
                 <tr>
@@ -122,9 +122,9 @@
                 </div>
                 <!-- {{ .|linebreaks }} -->
 
-                {% endfor %}
-                
             </table>
+            <br><br>
+            {% endfor %}
             <!-- Table Ends -->
             <br>    
         </div>
