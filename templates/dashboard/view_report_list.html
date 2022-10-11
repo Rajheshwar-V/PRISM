@@ -75,10 +75,10 @@
                 </tr> -->
 
                 <div>
-                    
-                <tr>
-                    <span style="font-weight:bold"> {{study.study_name}} </span>
-                </tr>
+
+                    <tr>
+                        <span id="title_name"> {{study.study_name}} </span>
+                    </tr>
                     <!-- <tr>
                     <th class="heading">{{study.study_name}}</th>
                      </tr> -->
@@ -116,7 +116,7 @@
                     <tr>
 
                         <th class="comments">Comments</th>
-                        <td class="comments">{{ study.comment }}</td>
+                        <td class="comments_disp">{{ study.comment }}</td>
 
                     </tr>
                 </div>
@@ -126,7 +126,7 @@
             <br><br>
             {% endfor %}
             <!-- Table Ends -->
-            <br>    
+            <br>
         </div>
     </div>
     </div>
@@ -153,6 +153,19 @@
 
     <!-- Sidebar CSS Starts-->
     <style>
+        #title_name {
+            position: relative;
+            text-align: center;
+            margin-left: 48%;
+            font-weight: bolder;
+            font-size: 22px;
+        }
+
+        span {
+            text-align: center;
+            margin-left: 45%;
+        }
+
         .content {
             position: relative;
             margin-left: 90px;
@@ -218,15 +231,17 @@
             text-align: center;
         }
 
-        span {
-            text-align: center;
-            margin-left: 40%;
-        }
+
 
         .comments {
             border: none;
+            font-size: 20px;
         }
 
+        .comments_disp {
+            border: none;
+            font-size: 20px;
+        }
         img {
             width: 450px;
             height: 350px;

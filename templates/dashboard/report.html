@@ -66,7 +66,7 @@
         <div>
             <table>
 
-                <span style="font-weight:bold"> {{study.study_name}} </span>
+                <span id="title_name" style="font-weight:bold"> {{study.study_name}} </span>
 
                 <tr>
                     {% for image in study_images%}
@@ -101,7 +101,7 @@
                 <tr>
 
                     <th class="comments">Comments</th>
-                    <td class="comments">{{ study.comment }}
+                    <td class="comments_disp">{{ study.comment }}
                     </td>
                 </tr>
             </table>
@@ -183,13 +183,27 @@
             text-align: center;
         }
 
+        #title_name {
+            position: relative;
+            text-align: center;
+            margin-left: 48%;
+            font-weight: bolder;
+            font-size: 22px;
+        }
+
         span {
             text-align: center;
-            margin-left: 40%;
+            margin-left: 45%;
         }
 
         .comments {
             border: none;
+            font-size: 20px;
+        }
+
+        .comments_disp {
+            border: none;
+            font-size: 20px;
         }
 
         img {
